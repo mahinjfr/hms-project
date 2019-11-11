@@ -1,0 +1,15 @@
+{
+  "title": "KPI",
+  "type": "object",
+  "x-tags": [
+    "str"
+  ],
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "code": {
+      "$ref": "../EHR/01-CommonModels/Composition.v1.json"
+    }
+  }
+}

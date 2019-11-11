@@ -30,8 +30,11 @@
     "compositions": {
       "type": "array",
       "items": {
-        "$ref": "./Composition.v1.json"
+        "$ref": "../../Common/kpi.v1.json"
       }
     }
-  }
+  },
+  "x-tags": [
+    "chr"
+  ]
 }
