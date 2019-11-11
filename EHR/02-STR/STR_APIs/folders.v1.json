@@ -21,8 +21,130 @@
           "str"
         ],
         "responses": {},
-        "operationId": "getAllFolders",
-        "description": "لیست تمامی فولدرها را بر می گرداند"
+        "operationId": "findAllFolders():List<Folder>",
+        "description": "تمام فولدرها را استخراج کرده بر می گرداند ترتیب بر اساس فیلد \nSEQUENCE \nو بصورت صعودی است.\nنام پوشه، شناسه پوشه ، پوشه های فرزند و  ترتیب بعنوان خروجی کفایت می کند.\n"
+      },
+      "put": {
+        "summary": "",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "operationId": "reorderFolders(folders)",
+        "description": "لیستی از فولدرها را دریافت کرده و مشخصه\n seq \nمربوط به فولدرها را به مقدار جدید تغییر می دهد\nشناسه هر فولدر و مشخصه \nsequence \nهر فولدر جهت اعمال این تغییر کافی است",
+        "tags": [
+          "str"
+        ]
+      },
+      "post": {
+        "summary": "",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "description": "فولدر با مشخصات تعیین شده را ذخیره می کند \nدر هنگام ذخیره سازی می بایست اگر ذخیره سازی مربوط به ایجاد است ، فیلدهای نظیر تاریخ ایجاد ، ایجاد کننده بترتیب با  تاریخ-زمان جاری و  شناسه مربوط به کاربر ایجاد کننده مقداردهی شود. این مقادیر فیلدهای آخرین تاریخ ویرایش و آخرین ایجاد کننده را نیز مقداردهی کند.\nدر صورتیکه ذخیره سازی مربوط به حالت ویرایش است می بایست علاوه بر ذخیره سازی فیلدهای مورد نظر ، فیلدهای آخرین تاریخ ویرایش و آخرین ویرایش کننده با اطلاعات مربوط به تارخ-زمان جاری و شناسه کاربر ذخیره کننده اطلاعات مقداردهی شود.\nدر سبک ایجاد در هنگام ذخیره سازی با توجه به فولدر بالادست ، فیلد\n SEQUENCE \n تنظیم و ذخیره شود.(این فیلد ترتیب قرارگیری هر فولدر را در فولدر پدر یا لیست فولدرها نشان می دهد.)\n",
+        "operationId": "saveFolder(folder:Folder): Boolean",
+        "tags": [
+          "str"
+        ]
+      },
+      "delete": {
+        "summary": "",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": ""
+                }
+              }
+            }
+          },
+          "201": {
+            "description": "Created",
+            "headers": {
+              "header-0": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            }
+          }
+        },
+        "operationId": "removeFolder (Folder:KPI): Boolean",
+        "tags": [
+          "str"
+        ],
+        "description": "usedFolder(folderId):Boolean \nفراخوانی شود ، در صورتیکه خروجی این متد\n false \nباشد، امکان حذف پوشه وجود دارد.\nسطرها با شناسه مربوط به پوشه مورد نظر از جدول \nfolder و folderComposition \nحذف شوند"
+      },
+      "options": {
+        "summary": "",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "description": ""
+      }
+    },
+    "/folders/{id}": {
+      "parameters": [
+        {
+          "type": "string",
+          "name": "id",
+          "in": "path",
+          "required": true
+        }
+      ],
+      "get": {
+        "summary": "Your GET endpoint",
+        "tags": [],
+        "responses": {},
+        "description": "پوشه با  شناسه تعیین شده را بر می گرداند",
+        "operationId": "findFolderById(id:Integer):Folder"
+      }
+    },
+    "/folders/{id}/compositions": {
+      "parameters": [
+        {
+          "type": "string",
+          "name": "id",
+          "in": "path",
+          "required": true
+        }
+      ],
+      "get": {
+        "summary": "Your GET endpoint",
+        "tags": [
+          "str"
+        ],
+        "responses": {},
+        "operationId": "getFolderCompositions(folder): List<FolderCompositions>",
+        "description": "لیست موضوعات مربوط به یک پوشه را بر میگرداند\n(شناسه هر کامپوزیشن، ترتیب آن و عنوان موضوع ها بعنوان خروجی کافیست )"
+      },
+      "post": {
+        "summary": "",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "operationId": "saveFolderCompositions(folderId,List<FolderCompositions>)",
+        "description": "ذخیره دسته ای از موضوعات برای پوشه مورد نظر را انجام می دهد. این ذخیره سازی شامل حذف موضوعاتی که قبلا در موضوعات مربوط به پوشه قرار داشتند  و دیگر در این دسته قرار ندارند . ذخیره موضوعات جدید برای پوشه مورد نظر ، تنظیم ترتیب \n(seq)\n برای موضوعات مربوط به پوشه است. مجموعه عملیات در جدول\n FolderComposition \nانجام می شود.\nایجاد کننده/تاریخ ایجاد و  ویرایش کننده/تاریخ ویرایش نیز ذخیره شود.\n",
+        "tags": [
+          "str"
+        ]
       }
     }
   },

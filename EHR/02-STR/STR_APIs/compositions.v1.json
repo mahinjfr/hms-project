@@ -1,0 +1,46 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "compositions",
+    "version": "1.0"
+  },
+  "host": "localhost:3000",
+  "schemes": [
+    "http"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "paths": {
+    "/compositions": {
+      "get": {
+        "summary": "Your GET endpoint",
+        "tags": [],
+        "responses": {},
+        "operationId": "getCompositions():List<Composition>",
+        "description": "لیست تمامی کامپوزیشن های تعریف شده را بر میگرداند(شناسه، کد ، نام و گونه موضوعات بعنوان خروجی کافیست)\nموضوعات بر اساس کد و ورژن بصورت نزولی مرتب شده باشند"
+      }
+    },
+    "/compositions/{code}": {
+      "parameters": [
+        {
+          "type": "string",
+          "name": "code",
+          "in": "path",
+          "required": true
+        }
+      ],
+      "get": {
+        "summary": "Your GET endpoint",
+        "tags": [],
+        "responses": {},
+        "operationId": "getCompositionsByCode(compositionCode:String):List<Compositions>",
+        "description": "لیست تمامی کامپوزیشن های تعریف شده با کد یکسان را بر میگرداند\n(تمامی گونه های یک کامپوزیشن)\n(شناسه، کد ، نام و گونه موضوعات بعنوان خروجی کافیست)\nترتیب نزولی بر اساس گونه \n(version)\nدر نظر گرفته شود"
+      }
+    }
+  },
+  "definitions": {}
+}
