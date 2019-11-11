@@ -1,0 +1,12 @@
+{
+  "title": "objective",
+  "type": "object",
+  "x-tags": [
+    "str"
+  ],
+  "properties": {
+    "id": {
+      "type": "string"
+    }
+  }
+}
