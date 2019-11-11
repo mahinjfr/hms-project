@@ -1,0 +1,37 @@
+{
+  "title": "Folder",
+  "type": "object",
+  "description": "sdasdasd",
+  "properties": {
+    "id": {
+      "type": "integer"
+    },
+    "name": {
+      "type": "string"
+    },
+    "lastModificationDate": {
+      "format": "date-time",
+      "type": "string"
+    },
+    "lastModifierId": {
+      "type": "integer",
+      "format": "date-time"
+    },
+    "seq": {
+      "type": "integer"
+    },
+    "creationDate": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "creatorId": {
+      "type": "integer"
+    },
+    "compositions": {
+      "type": "array",
+      "items": {
+        "$ref": "./Composition.v1.json"
+      }
+    }
+  }
+}

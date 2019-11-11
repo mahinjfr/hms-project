@@ -1,0 +1,36 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "KPIs",
+    "version": "1.0",
+    "description": "مجموعه عملیات مرتبط با شاخص را مدیریت می کند",
+    "contact": {
+      "name": "kpis"
+    }
+  },
+  "servers": [
+    {
+      "url": "http://localhost:3000"
+    }
+  ],
+  "paths": {},
+  "components": {
+    "schemas": {
+      "Objective": {
+        "title": "Objective",
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "": {
+            "type": "array",
+            "items": {
+              "$ref": "../01-CommonModels/folder.v1.json"
+            }
+          }
+        }
+      }
+    }
+  }
+}

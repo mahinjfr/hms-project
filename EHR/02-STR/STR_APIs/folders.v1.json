@@ -1,0 +1,32 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Folders",
+    "version": "1.0",
+    "description": "لیست پوشه ها و عملیات مربوطه را پوشش می دهد",
+    "contact": {
+      "name": "folders"
+    }
+  },
+  "servers": [
+    {
+      "url": "http://localhost:3000"
+    }
+  ],
+  "paths": {
+    "/folders": {
+      "get": {
+        "summary": "/folders/{id}",
+        "tags": [
+          "str"
+        ],
+        "responses": {},
+        "operationId": "getAllFolders",
+        "description": "لیست تمامی فولدرها را بر می گرداند"
+      }
+    }
+  },
+  "components": {
+    "schemas": {}
+  }
+}

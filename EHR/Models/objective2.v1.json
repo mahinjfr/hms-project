@@ -1,9 +1,0 @@
-{
-  "title": "objective2",
-  "type": "object",
-  "properties": {
-    "id": {
-      "type": "string"
-    }
-  }
-}

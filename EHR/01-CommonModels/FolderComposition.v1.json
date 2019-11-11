@@ -1,0 +1,10 @@
+{
+  "title": "FolderComposition",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string"
+    }
+  },
+  "description": "موضوعات تخصیص یافته به پوشه مشخص را نشان می دهد"
+}
